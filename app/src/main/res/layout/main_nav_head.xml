@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:background="@color/colorAccent"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/navMainHead_imgLogo"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:contentDescription="Logomarca da JNSOFT"
+        android:paddingTop="10dp"
+        android:src="@drawable/business_logo_bar" />
+
+    <TextView
+        android:id="@+id/navMainHead_lblTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5sp"
+        android:text="Nome do Cliente"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/colorWhite"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/navMainHead_lblSite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="www.jnsoft.com.br"
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp" />
+
+
+
+</LinearLayout>
