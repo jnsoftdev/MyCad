@@ -389,6 +389,93 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/frmRegistro_viewNumero" />
 
+
+            <TextView
+                android:id="@+id/frmRegistro_viewBairro"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:paddingLeft="4sp"
+                android:paddingRight="4sp"
+                android:text="Bairro"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintEnd_toEndOf="@+id/frmRegistro_txtBairro"
+                app:layout_constraintStart_toStartOf="@+id/frmRegistro_txtBairro"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_txtNumero" />
+
+            <EditText
+                android:id="@+id/frmRegistro_txtBairro"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:hint="ex.: Centro"
+                android:inputType="text"
+                android:textColor="@color/colorGrayDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_viewBairro" />
+
+
+            <TextView
+                android:id="@+id/frmRegistro_viewCidade"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:paddingLeft="4sp"
+                android:paddingRight="4sp"
+                android:text="Cidade"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintEnd_toEndOf="@+id/frmRegistro_txtCidade"
+                app:layout_constraintStart_toStartOf="@+id/frmRegistro_txtCidade"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_txtBairro" />
+
+            <EditText
+                android:id="@+id/frmRegistro_txtCidade"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:hint="ex.: Castanhal"
+                android:inputType="text"
+                android:textColor="@color/colorGrayDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_viewCidade" />
+
+
+            <TextView
+                android:id="@+id/frmRegistro_viewEstados"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:paddingLeft="4sp"
+                android:paddingRight="4sp"
+                android:text="Selecione seu estado"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintEnd_toEndOf="@+id/frmRegistro_cbEstados"
+                app:layout_constraintStart_toStartOf="@+id/frmRegistro_cbEstados"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_txtCidade" />
+
+            <Spinner
+                android:id="@+id/frmRegistro_cbEstados"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:hint="Selecione seu estado"
+                android:textColor="@color/colorGrayDark"
+                android:background="@android:drawable/btn_dropdown"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_viewEstados" />
+
             <TextView
                 android:id="@+id/frmRegistro_viewCreate"
                 android:layout_width="0dp"
@@ -403,7 +490,7 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@+id/frmRegistro_txtCreate"
                 app:layout_constraintStart_toStartOf="@+id/frmRegistro_txtCreate"
-                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_txtNumero"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_cbEstados"
                 tools:visibility="visible" />
 
             <com.santalu.maskedittext.MaskEditText
