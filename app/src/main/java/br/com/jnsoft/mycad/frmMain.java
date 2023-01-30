@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -67,6 +69,9 @@ public class frmMain extends AppCompatActivity {
 
     private void initFilds() {
         //Inicia fragmentos = home
+        callFragHome();
+
+        //Outras funçoes iniciais do formulario
 
     }
 
@@ -79,8 +84,20 @@ public class frmMain extends AppCompatActivity {
 
     }
 
+    private void callFragHome(){
+        FragmentHome fragmentHome = new FragmentHome();
+        selectFragment(fragmentHome,"Home v1.0");
+    }
+
 
     // ############### Funções
+    public void selectFragment(Fragment fragment, String titulo){
+        toolbar.setTitle(titulo);
+        FragmentTransaction transaction;
+        transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frmMain_frameLayout, fragment);
+        transaction.commit();
+    }
 
 
     // ############### Data Services
@@ -111,7 +128,7 @@ public class frmMain extends AppCompatActivity {
         navDrawer.setNavigationItemSelectedListener(item ->{
             switch (item.getItemId()){
                 case R.id.navMain_Home:
-                    Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+                    callFragHome(); // isso é feito para economizar linhas de codigo!
                     break;
                 case R.id.navMain_CadPessoa:
                     Toast.makeText(this, "Cadastro", Toast.LENGTH_SHORT).show();
@@ -123,7 +140,7 @@ public class frmMain extends AppCompatActivity {
         navBottom.setOnNavigationItemSelectedListener(item ->{
             switch (item.getItemId()){
                 case R.id.menuMainBotton_Home:
-                    Toast.makeText(this, "Home bottom", Toast.LENGTH_SHORT).show();
+                    callFragHome();
                     break;
                 case R.id.menuMainBotton_Chat:
                     Toast.makeText(this, "Chat", Toast.LENGTH_SHORT).show();
