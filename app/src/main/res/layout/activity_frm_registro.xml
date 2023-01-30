@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".frmRegistro">
+
+    <include
+        android:id="@+id/frmRegistro_toolbar"
+        layout="@layout/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/frmRegistro_scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:focusableInTouchMode="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frmRegistro_toolbar">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/frmRegistro_constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/frmRegistro_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="165dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/background_laranja"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/frmRegistro_Prodile"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/profile_thumb"
+                    app:layout_constraintBottom_toBottomOf="@+id/frmRegistro_background"
+                    app:layout_constraintEnd_toEndOf="@+id/frmRegistro_background"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/frmRegistro_background" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/frmRegistro_viewNome"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:paddingLeft="4sp"
+                android:paddingRight="4sp"
+                android:text="Nome"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintEnd_toEndOf="@+id/frmRegistro_txtNome"
+                app:layout_constraintStart_toStartOf="@+id/frmRegistro_txtNome"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_constraintLayout" />
+
+            <EditText
+                android:id="@+id/frmRegistro_txtNome"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:hint="Nome completo"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:textColor="@color/colorGrayDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_viewNome" />
+
+
+            <TextView
+                android:id="@+id/frmRegistro_viewCPF"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:paddingLeft="4sp"
+                android:paddingRight="4sp"
+                android:text="CPF/CNPJ"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintEnd_toEndOf="@+id/frmRegistro_txtCPF"
+                app:layout_constraintStart_toStartOf="@+id/frmRegistro_txtCPF"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_txtNome" />
+
+            <com.santalu.maskedittext.MaskEditText
+                android:id="@+id/frmRegistro_txtCPF"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:hint=""
+                android:inputType="number"
+                android:minHeight="48dp"
+                android:textColor="@color/colorGrayDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_viewCPF"
+                app:met_mask="###.###.###-##" />
+
+
+            <TextView
+                android:id="@+id/frmRegistro_viewPhone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:paddingLeft="4sp"
+                android:paddingRight="4sp"
+                android:text="Telefone/WhatsApp"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintEnd_toEndOf="@+id/frmRegistro_txtPhone"
+                app:layout_constraintStart_toStartOf="@+id/frmRegistro_txtPhone"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_txtCPF" />
+
+            <com.santalu.maskedittext.MaskEditText
+                android:id="@+id/frmRegistro_txtPhone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:hint=""
+                android:inputType="number"
+                android:minHeight="48dp"
+                android:textColor="@color/colorGrayDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_viewPhone"
+                app:met_mask="(##) #.####-####" />
+
+
+            <TextView
+                android:id="@+id/frmRegistro_viewEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:paddingLeft="4sp"
+                android:paddingRight="4sp"
+                android:text="Email"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintEnd_toEndOf="@+id/frmRegistro_txtEmail"
+                app:layout_constraintStart_toStartOf="@+id/frmRegistro_txtEmail"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_txtPhone" />
+
+            <EditText
+                android:id="@+id/frmRegistro_txtEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:hint="Ex.: usuario@dominio.com.br"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                android:textColor="@color/colorGrayDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_viewEmail" />
+
+
+            <TextView
+                android:id="@+id/frmRegistro_viewUsername"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:paddingLeft="4sp"
+                android:paddingRight="4sp"
+                android:text="Usuário"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintEnd_toEndOf="@+id/frmRegistro_btnChkUser"
+                app:layout_constraintStart_toStartOf="@+id/frmRegistro_txtUsername"
+                app:layout_constraintTop_toBottomOf="@id/frmRegistro_txtEmail"/>
+
+
+            <EditText
+                android:id="@+id/frmRegistro_txtUsername"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:hint="Ex.: JoseOrlando143"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:textColor="@color/colorGrayDark"
+                app:layout_constraintEnd_toStartOf="@+id/frmRegistro_btnChkUser"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_viewUsername" />
+
+            <Button
+                android:id="@+id/frmRegistro_btnChkUser"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:background="#1976d2"
+                android:text="Validar"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_viewUsername"
+                tools:ignore="MissingConstraints" />
+
+
+            <TextView
+                android:id="@+id/frmRegistro_viewPass"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:paddingLeft="4sp"
+                android:paddingRight="4sp"
+                android:text="Senha"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintEnd_toEndOf="@+id/frmRegistro_txtPass"
+                app:layout_constraintStart_toStartOf="@+id/frmRegistro_txtPass"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_txtUsername" />
+
+            <EditText
+                android:id="@+id/frmRegistro_txtPass"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:hint=""
+                android:inputType="textPassword"
+                android:textColor="@color/colorGrayDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_viewPass" />
+
+            <TextView
+                android:id="@+id/frmRegistro_viewConfirm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:paddingLeft="4sp"
+                android:paddingRight="4sp"
+                android:text="Confirma Senha"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintEnd_toEndOf="@+id/frmRegistro_txtConfirm"
+                app:layout_constraintStart_toStartOf="@+id/frmRegistro_txtConfirm"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_txtPass" />
+
+            <EditText
+                android:id="@+id/frmRegistro_txtConfirm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:hint=""
+                android:inputType="textPassword"
+                android:textColor="@color/colorGrayDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_viewConfirm" />
+
+
+            <TextView
+                android:id="@+id/frmRegistro_viewCEP"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:paddingLeft="4sp"
+                android:paddingRight="4sp"
+                android:text="CEP"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintEnd_toEndOf="@+id/frmRegistro_btnCEP"
+                app:layout_constraintStart_toStartOf="@+id/frmRegistro_txtCEP"
+                app:layout_constraintTop_toBottomOf="@id/frmRegistro_txtConfirm"/>
+
+
+            <com.santalu.maskedittext.MaskEditText
+                android:id="@+id/frmRegistro_txtCEP"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:hint="Ex.:68.744-54"
+                android:inputType="number"
+                android:textColor="@color/colorGrayDark"
+                app:met_mask="##.###-###"
+                app:layout_constraintEnd_toStartOf="@+id/frmRegistro_btnCEP"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_viewCEP" />
+
+            <Button
+                android:id="@+id/frmRegistro_btnCEP"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:background="#1976d2"
+                android:text="Buscar"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_viewCEP"
+                tools:ignore="MissingConstraints" />
+
+
+
+            <TextView
+                android:id="@+id/frmRegistro_viewLogradouro"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:paddingLeft="4sp"
+                android:paddingRight="4sp"
+                android:text="Logradouro"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintEnd_toEndOf="@+id/frmRegistro_txtLogradouro"
+                app:layout_constraintStart_toStartOf="@+id/frmRegistro_txtLogradouro"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_txtCEP" />
+
+            <EditText
+                android:id="@+id/frmRegistro_txtLogradouro"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:hint=""
+                android:inputType="textAutoComplete"
+                android:textColor="@color/colorGrayDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_viewLogradouro" />
+
+
+            <TextView
+                android:id="@+id/frmRegistro_viewNumero"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:paddingLeft="4sp"
+                android:paddingRight="4sp"
+                android:text="Numero"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintEnd_toEndOf="@+id/frmRegistro_txtNumero"
+                app:layout_constraintStart_toStartOf="@+id/frmRegistro_txtNumero"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_txtLogradouro" />
+
+            <EditText
+                android:id="@+id/frmRegistro_txtNumero"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:hint=""
+                android:inputType="text"
+                android:textColor="@color/colorGrayDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_viewNumero" />
+
+            <TextView
+                android:id="@+id/frmRegistro_viewCreate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:paddingLeft="4sp"
+                android:paddingRight="4sp"
+                android:text="Registro"
+                android:textColor="@color/colorBlack"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/frmRegistro_txtCreate"
+                app:layout_constraintStart_toStartOf="@+id/frmRegistro_txtCreate"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_txtNumero"
+                tools:visibility="visible" />
+
+            <com.santalu.maskedittext.MaskEditText
+                android:id="@+id/frmRegistro_txtCreate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:hint="00/00/0000"
+                android:inputType="date"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_viewCreate"
+                app:met_mask="##/##/####"
+                tools:visibility="visible" />
+
+            <CheckBox
+                android:id="@+id/frmRegistro_chkAtivo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:checked="true"
+                android:hint="Ativo"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_txtCreate"
+                tools:visibility="visible" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/frmRegistro_chkAtivo"
+                app:layout_constraintStart_toStartOf="@+id/frmRegistro_chkAtivo"
+                app:layout_constraintTop_toBottomOf="@+id/frmRegistro_chkAtivo">
+
+                <Button
+                    android:id="@+id/frmRegistro_btnAccept"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:background="#1976d2"
+                    android:text="Confirmar"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"/>
+
+                <Button
+                    android:id="@+id/frmRegistro_btnCancel"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorRedDark"
+                    android:text="Voltar"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"/>
+
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/frmRegistro_progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
