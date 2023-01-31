@@ -1,5 +1,8 @@
 package br.com.jnsoft.mycad.helper;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Utils {
 
     //Converte um inteiro ou texto em boolean válida! ex.: 0 = false; 1 = true; ...
@@ -18,6 +21,22 @@ public class Utils {
             return 1;
         } else {
             return 0;
+        }
+    }
+
+    //Datas e Horas
+
+    /** Entra com uma data no formato dd/MM/YYYY string  e retorna uma data valída no format string*/
+    public static Date getStrDate(String value) {
+        Date data = new Date();
+        String format = "dd/MM/yyyy";
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat(format);
+        try{
+            data = dateFormat.parse(value);
+            return data;
+        } catch (Exception e) {
+            return data;
         }
     }
 

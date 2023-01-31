@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">MyCad</string>
+
+    <string name="Error_Server_Response">Erro de acesso ao servidor!</string>
+    <string name="Error_Server_400">Servidor não encontrado!</string>
+    <string name="Error_Server_500">Verifique a sua conexão com internet!</string>
+
+
+    <string name="Login_Auth_Fail">Usuário o senha inválidos!</string>
+    <string name="Login_Auth_Denied">Acesso Negado!</string>
+
+    <string name="sign_in">Entrar</string>
+    <string name="Forgot_Password">Esqueceu sua senha?</string>
+    <string name="username">Usuário</string>
+    <string name="password">Senha</string>
+
+
+
+
+    <string name="nav_drawer_open">Abrir</string>
+    <string name="nav_drawer_close">fechar</string>
+    <string name="nav_imgDescricao">Logomarca da Empresa</string>
+
 </resources>
