@@ -1,5 +1,6 @@
 package br.com.jnsoft.mycad.helper;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -37,6 +38,18 @@ public class Utils {
             return data;
         } catch (Exception e) {
             return data;
+        }
+    }
+
+    /** Retorna aDta e hora atual do sistema para a data base */
+    public static String getDate() {
+        Date data = new Date();
+        String format = "dd/MM/yyyy";
+        try{
+            DateFormat dateFormat = new SimpleDateFormat(format);
+            return dateFormat.format(data);
+        } catch (Exception e) {
+            return null;
         }
     }
 

@@ -21,4 +21,21 @@ public class StringFormat {
         return CNPJ;
     }
 
+    //VOU DEIXA ASSIM POR CONTA DO USO EM OUTRAS LIVRARIAS E OUTROS DEVS
+    public static String formataCGC(String CGC){
+        CGC = CGC.replace(".","");
+        CGC = CGC.replace("-","");
+        CGC = CGC.replace("/","");
+        return CGC;
+    }
+
+    public static String formataPhone(String Phone){
+        Phone = Phone.replace("(","");
+        Phone = Phone.replace(")","");
+        Phone = Phone.replace(" ","");
+        Phone = Phone.replace(".","");
+        Phone = Phone.replace("-","");
+        return Phone;
+    }
+
 }

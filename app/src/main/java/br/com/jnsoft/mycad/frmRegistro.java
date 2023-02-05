@@ -2,16 +2,12 @@ package br.com.jnsoft.mycad;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -40,11 +36,12 @@ import java.util.Map;
 
 import br.com.jnsoft.mycad.helper.Constant;
 import br.com.jnsoft.mycad.helper.StringFormat;
+import br.com.jnsoft.mycad.helper.Utils;
+import br.com.jnsoft.mycad.helper.urls.ClientesUrl;
 import br.com.jnsoft.mycad.helper.urls.EstadosUrl;
 import br.com.jnsoft.mycad.helper.urls.LoginUrl;
 import br.com.jnsoft.mycad.model.Estados;
 import br.com.jnsoft.mycad.model.Head;
-import br.com.jnsoft.mycad.model.Login;
 
 public class frmRegistro extends AppCompatActivity {
     static Toolbar toolbar;
@@ -66,7 +63,7 @@ public class frmRegistro extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_frm_registro);
+        setContentView(R.layout.activity_registro);
 
         toolbarFilds();
         initThread();
@@ -125,7 +122,7 @@ public class frmRegistro extends AppCompatActivity {
         btnConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                setCliente(v.getContext());
             }
         });
 
@@ -349,6 +346,77 @@ public class frmRegistro extends AppCompatActivity {
                 Map<String, String> param = new HashMap<String, String>();
                 param.put("token", Constant.API_TOKEN);
                 param.put("user", txtUsername.getText().toString());
+                return param;
+            }
+        };
+
+        requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(request);
+
+    }
+
+    protected void setCliente(Context context){
+        progress.setVisibility(View.VISIBLE);
+        final String URL = ClientesUrl.InsertUser;
+        JSONObject value = null;
+
+        StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                progress.setVisibility(View.GONE);
+
+                if (response.length() > 0) {
+                    try {
+                        Head dados = new Head();
+                        JSONArray json = new JSONArray(response);
+                        JSONObject value = json.getJSONObject(0);
+
+                        dados.setErro(Boolean.parseBoolean(value.getString("erro")));
+                        dados.setMessage(value.getString("message"));
+                        dados.setCode(Integer.parseInt(value.getString("code")));
+
+                        if(dados.getErro() == true){
+                            Intent intent = new Intent(context, frmLogin.class);
+                            startActivity(intent);
+                        }
+
+                    } catch (JSONException e) {
+                        Toast.makeText(context, R.string.Error_Server_Response, Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progress.setVisibility(View.GONE);
+                Toast.makeText(context, R.string.Error_Server_500, Toast.LENGTH_SHORT).show();
+            }
+
+        }){
+            @Override
+            protected Map<String,String> getParams() throws AuthFailureError{
+                Map<String, String> param = new HashMap<String, String>();
+                param.put("token", Constant.API_TOKEN);
+                param.put("cli_nome", txtNome.getText().toString().toUpperCase());
+                param.put("cli_cpf",  StringFormat.formataCGC(txtCPF.getText().toString()));
+                param.put("cli_fone", StringFormat.formataPhone(txtFone.getText().toString()));
+                param.put("cli_email", txtEmail.getText().toString().toLowerCase());
+                param.put("cli_cep", StringFormat.formataCEP(txtCEP.getText().toString()));
+                param.put("cli_logradouro", txtLogradouro.getText().toString());
+                param.put("cli_numero", txtNumero.getText().toString());
+                param.put("cli_create", Utils.getDate());
+                param.put("cli_ativo", String.valueOf(Utils.isBoolInt(chkAtivo.isChecked())));
+
+                param.put("bai_nome", txtBairro.getText().toString().toUpperCase());
+                param.put("cid_nome", txtCidade.getText().toString().toUpperCase());
+                param.put("est_id", String.valueOf(((Estados)cbEstado.getSelectedItem()).getId()));
+
+                param.put("lgn_user", txtUsername.getText().toString());
+                param.put("lgn_pass", txtPass.getText().toString());
+                param.put("lgn_acesso", "1");
+                param.put("lgn_ativo", "1");
                 return param;
             }
         };
