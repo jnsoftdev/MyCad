@@ -77,6 +77,7 @@ public class frmRegistro extends AppCompatActivity {
     }
 
     private void toolbarFilds(){
+
         toolbar = findViewById(R.id.frmRegistro_toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("New Register");
