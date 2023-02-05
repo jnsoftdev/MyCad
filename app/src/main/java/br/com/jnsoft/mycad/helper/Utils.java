@@ -1,6 +1,14 @@
 package br.com.jnsoft.mycad.helper;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.view.View;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -44,7 +52,7 @@ public class Utils {
     /** Retorna aDta e hora atual do sistema para a data base */
     public static String getDate() {
         Date data = new Date();
-        String format = "dd/MM/yyyy";
+        String format = "yyyy/MM/dd HH:mm/ss";
         try{
             DateFormat dateFormat = new SimpleDateFormat(format);
             return dateFormat.format(data);
@@ -52,5 +60,4 @@ public class Utils {
             return null;
         }
     }
-
 }

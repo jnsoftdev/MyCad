@@ -77,7 +77,8 @@ public class frmRegistro extends AppCompatActivity {
 
         toolbar = findViewById(R.id.frmRegistro_toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("New Register");
+        toolbar.setTitle("Novo Registro");
+        toolbar.setLogo(R.drawable.ic_person_add);
     }
 
     private void initThread() {
@@ -119,21 +120,45 @@ public class frmRegistro extends AppCompatActivity {
     }
 
     private void initListiner() {
-        btnConfirmar.setOnClickListener(new View.OnClickListener() {
+
+        txtUsername.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onClick(View v) {
-                setCliente(v.getContext());
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    getLoginValidate(v.getContext());
+                }
             }
         });
 
-        btnCancelar.setOnClickListener(new View.OnClickListener() {
+        txtConfirm.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onClick(View v) {
-
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    if(txtPass.getText().toString() == ""){
+                        // colocar o txtPass em focus
+                    }else{
+                        if(txtConfirm.getText().toString() == ""){
+                            Toast.makeText(v.getContext(), "Confirmação da senha requerida!" ,Toast.LENGTH_SHORT).show();
+                        }else if(!txtPass.getText().toString().equals(txtConfirm.getText().toString())){
+                            Toast.makeText(v.getContext(), "As senhas estão diferentes!" ,Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
             }
         });
 
+        txtCEP.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    String cep = txtCEP.getText().toString();
 
+                    if(cep.length()>0){
+                        getBuscarCEP(v.getContext(), StringFormat.formataCEP(cep));
+                    }
+                }
+            }
+        });
 
         btnChkUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,13 +178,63 @@ public class frmRegistro extends AppCompatActivity {
                 }
             }
         });
+
+        btnConfirmar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Validações vao pra outra procidure que vai ternona verdadeiro o falso
+                if(txtNome.getText().toString() == ""){
+                    Toast.makeText(v.getContext(), "Nome requerido!" ,Toast.LENGTH_SHORT).show();
+                    return;
+                }else if(txtCPF.getText().toString() == ""){
+                    Toast.makeText(v.getContext(), "CPF requerido!" ,Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(txtUsername.getText().toString() == ""){
+                    Toast.makeText(v.getContext(), "Usuário requerido!" ,Toast.LENGTH_SHORT).show();
+                    return;
+                }else if(txtPass.getText().toString() == ""){
+                    Toast.makeText(v.getContext(), "senha requerida!" ,Toast.LENGTH_SHORT).show();
+                    return;
+                }else if(txtConfirm.getText().toString() == ""){
+                    Toast.makeText(v.getContext(), "Confirmação da senha requerida!" ,Toast.LENGTH_SHORT).show();
+                    return;
+                }else if(!txtPass.getText().toString().equals(txtConfirm.getText().toString())){
+                    Toast.makeText(v.getContext(), "As senhas estão diferentes!" ,Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (Constant.loginPermitUser){
+                    setCliente(v.getContext());
+                }
+
+            }
+        });
+
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callfrmLogin();
+            }
+        });
+
+
+
+
     }
 
     // ############### Forms
     private void callfrmMain(){
-
+        Intent intent = new Intent(this, frmMain.class);
+        startActivity(intent);
     }
 
+    private void callfrmLogin(){
+        Intent intent = new Intent(this, frmLogin.class);
+        startActivity(intent);
+    }
 
     // ############### Funções
     // ****** Set Values of Components  ******
@@ -375,7 +450,7 @@ public class frmRegistro extends AppCompatActivity {
                         dados.setMessage(value.getString("message"));
                         dados.setCode(Integer.parseInt(value.getString("code")));
 
-                        if(dados.getErro() == true){
+                        if(!dados.getErro()){
                             Intent intent = new Intent(context, frmLogin.class);
                             startActivity(intent);
                         }
