@@ -73,7 +73,7 @@ public class frmLogin extends AppCompatActivity {
     }
 
     private void initComponets(){
-        progress = findViewById(R.id.frmRegistro_progressBar);
+        progress = findViewById(R.id.frmLogin_progressBar);
 
         txtUser = findViewById(R.id.frmLogin_txtUsername);
         txtPass = findViewById(R.id.frmLogin_txtPassword);
@@ -137,6 +137,8 @@ public class frmLogin extends AppCompatActivity {
         Login perfil = new Login();
 
         if(user.toUpperCase().equals("JNSOFT") && pass.toString().toUpperCase().equals("123")){
+            progress.setVisibility(View.GONE);
+
             perfil.setId(0);
             perfil.setCliID(0);
             perfil.setNome("JNSOFT DESENVOLVIMENTO");
@@ -147,6 +149,9 @@ public class frmLogin extends AppCompatActivity {
             perfil.setPass("******");
             perfil.setAcesso(true);
             perfil.setAtivo(true);
+
+            Constant.profileUser = perfil;
+            callfrmMain();
         }else{
 
             StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
@@ -176,6 +181,8 @@ public class frmLogin extends AppCompatActivity {
                                 Constant.profileUser = perfil;
                             }
 
+                            progress.setVisibility(View.GONE);
+
                         } catch (JSONException e) {
                             Toast.makeText(getApplicationContext(), R.string.Error_Server_Response, Toast.LENGTH_SHORT).show();
                         }
@@ -203,8 +210,8 @@ public class frmLogin extends AppCompatActivity {
                 protected Map<String,String> getParams() throws AuthFailureError{
                     Map<String, String> param = new HashMap<String, String>();
                     param.put("token", Constant.API_TOKEN);
-                    param.put("lgn_user", user);
-                    param.put("lgn_pass", pass);
+                    param.put("user", user);
+                    param.put("pass", pass);
                     return param;
                 }
             };
