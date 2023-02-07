@@ -183,7 +183,7 @@ public class frmRegistro extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //Validações vao pra outra procidure que vai ternona verdadeiro o falso
+                //Validações vao pra outra procidure que vai retornar verdadeiro o falso
                 if(txtNome.getText().toString() == ""){
                     Toast.makeText(v.getContext(), "Nome requerido!" ,Toast.LENGTH_SHORT).show();
                     return;
